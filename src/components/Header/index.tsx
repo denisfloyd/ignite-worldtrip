@@ -1,36 +1,25 @@
-import Link from "next/link";
-import { Flex, Icon, Image } from "@chakra-ui/react";
-import { RiArrowDropLeftLine } from "react-icons/ri";
+import { IoIosArrowBack } from "react-icons/io";
+import { Flex, Icon, IconButton, Image, Link } from "@chakra-ui/react";
 
-import { useRouter } from "next/router";
+interface HeaderProps {
+  isContinent?: boolean;
+}
 
-export default function Header() {
-  const { asPath } = useRouter();
-
+export function Header({ isContinent = false }: HeaderProps) {
   return (
-    <Link href="/">
-      <Flex
-        as="header"
-        w="100%"
-        mx="auto"
-        alignItems="center"
-        justifyContent="center"
-        px="6"
-        h={["2rem", "3rem"]}
-      >
-        {asPath !== "/" && (
-          <Icon
-            as={RiArrowDropLeftLine}
-            fontSize={["1.5rem", "2rem"]}
-            color="gray.200"
-            position="absolute"
-            top={["0.95rem", "1.8rem"]}
-            left="20px"
-            cursor="pointer"
+    <Flex as="header" h={20} w="100%" justify="center" align="center" py="1rem">
+      {isContinent && (
+        <Link href="/" passHref>
+          <IconButton
+            aria-label="Back to home"
+            icon={<Icon as={IoIosArrowBack} />}
+            fontSize="24"
+            variant="unstyled"
+            mr="2"
           />
-        )}
-        <Image src="/logo.svg" h="2.8rem" />
-      </Flex>
-    </Link>
+        </Link>
+      )}
+      <Image src="/images/logo.svg" alt="worldtrip" />
+    </Flex>
   );
 }
