@@ -1,25 +1,41 @@
-import { IoIosArrowBack } from "react-icons/io";
-import { Flex, Icon, IconButton, Image, Link } from "@chakra-ui/react";
+import { Grid, Image, IconButton, Icon } from "@chakra-ui/react";
+import { useRouter } from "next/dist/client/router";
+import { BsChevronLeft } from "react-icons/bs";
 
-interface HeaderProps {
-  isContinent?: boolean;
-}
+export function Header() {
+  const { asPath, back } = useRouter();
 
-export function Header({ isContinent = false }: HeaderProps) {
+  const isHomePage = asPath === "/";
+
   return (
-    <Flex as="header" h={20} w="100%" justify="center" align="center" py="1rem">
-      {isContinent && (
-        <Link href="/" passHref>
-          <IconButton
-            aria-label="Back to home"
-            icon={<Icon as={IoIosArrowBack} />}
-            fontSize="24"
-            variant="unstyled"
-            mr="2"
-          />
-        </Link>
+    <Grid
+      w="100%"
+      maxW={1480}
+      h={["50px", "100px"]}
+      px={["6", "12"]}
+      bg="white"
+      justifyContent="center"
+      alignItems="center"
+      templateColumns="repeat(3, 1fr)"
+    >
+      {!isHomePage && (
+        <IconButton
+          aria-label="Back"
+          icon={<Icon as={BsChevronLeft} />}
+          fontSize="24"
+          variant="unstyled"
+          onClick={back}
+          gridColumn="1"
+          justifySelf="flex-start"
+        />
       )}
-      <Image src="/images/logo.svg" alt="worldtrip" />
-    </Flex>
+      <Image
+        w={["81px", "184px"]}
+        src="assets/logo.png"
+        alt="Logo worldtrip com avião voando ao final."
+        gridColumn="2"
+        justifySelf="center"
+      />
+    </Grid>
   );
 }
