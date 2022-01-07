@@ -56,9 +56,8 @@ Este projeto foi construído utilizando as seguintes tecnologias:
 * [Typescript](https://www.typescriptlang.org/)
 * [Next.js](https://nextjs.org/)
 * [React](https://reactjs.org/)
-* [scss](https://sass-lang.com/)
-* [date-fns](https://date-fns.org/)
-* [prismic CMS](https://prismic.io/)
+* [css](https://www.w3schools.com/css/)
+* [ChakraUI](https://chakra-ui.com/)
 * [react-icons](https://react-icons.github.io/react-icons/)
 
 
